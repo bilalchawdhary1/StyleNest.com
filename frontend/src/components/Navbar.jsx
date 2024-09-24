@@ -3,10 +3,12 @@ import { assets } from "../assets/frontend_assets/assets";
 import { useState } from "react";
 
 const Navbar = () => {
-    const [showDropdown, setShowDropdown] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
   return (
     <div className="py-5 flex items-center justify-between font-medium">
-      <img src={assets.logo} className="w-36" alt="" />
+      <Link to="/">
+        <img src={assets.logo} className="w-36" alt="" />
+      </Link>
       <ul className="hidden sm:flex gap-5 text-sm text-gray-700">
         <NavLink to="/" className="flex flex-col items-center gap-1">
           <p>Home</p>
@@ -43,23 +45,45 @@ const Navbar = () => {
         </div>
         <Link className="relative" to="/card">
           <img src={assets.cart_icon} className="w-5 cursor-pointer" alt="" />
-          <p className="absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]">10</p>
+          <p className="absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]">
+            10
+          </p>
         </Link>
-        <img onClick={()=>(setShowDropdown(true))} src={assets.menu_icon} className="w-5 cursor-pointer sm:hidden"  alt="" />
+        <img
+          onClick={() => setShowDropdown(true)}
+          src={assets.menu_icon}
+          className="w-5 cursor-pointer sm:hidden"
+          alt=""
+        />
       </div>
-        {/* menubar heer for mobile screen */}
-        <div className={`top-0 absolute right-0 bottom-0 overflow-hidden bg-white transition-all ${showDropdown ? 'w-full' : 'w-0' }`}>
-          <div className="flex flex-col text-gray-600">
-            <div onClick={()=>(setShowDropdown(false))} className="flex items-center gap-4 p-3">
-              <img className="h-4 rotate-180" src={assets.dropdown_icon} alt="" />
-              <p>Back</p>
-            </div>
-            <NavLink className="py-4 pl-6 border" to='/'>Home</NavLink>
-            <NavLink className="py-4 pl-6 border" to='/collection'>Collection</NavLink>
-            <NavLink className="py-4 pl-6 border" to='/about'>About</NavLink>
-            <NavLink className="py-4 pl-6 border" to='/contact'>Contact</NavLink>
+      {/* menu-bar for mobile screen */}
+      <div
+        className={`top-0 absolute right-0 bottom-0 overflow-hidden bg-white transition-all ${
+          showDropdown ? "w-full" : "w-0"
+        }`}
+      >
+        <div
+          className="flex flex-col text-gray-600"
+          onClick={() => setShowDropdown(false)}
+        >
+          <div className="flex items-center gap-4 p-3">
+            <img className="h-4 rotate-180" src={assets.dropdown_icon} alt="" />
+            <p>Back</p>
           </div>
+          <NavLink className="py-4 pl-6 border" to="/">
+            Home
+          </NavLink>
+          <NavLink className="py-4 pl-6 border" to="/collection">
+            Collection
+          </NavLink>
+          <NavLink className="py-4 pl-6 border" to="/about">
+            About
+          </NavLink>
+          <NavLink className="py-4 pl-6 border" to="/contact">
+            Contact
+          </NavLink>
         </div>
+      </div>
     </div>
   );
 };

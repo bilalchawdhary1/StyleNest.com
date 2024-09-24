@@ -9,6 +9,7 @@ import Collection from "./pages/Collection";
 import Contact from "./pages/Contact";
 import PlaceHolder from "./pages/PlaceHolder";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
       <Route path="/contact" element={<Contact/>}/>
       <Route path="/placeholder" element={<PlaceHolder/>}/>
     </Routes> 
+    <Footer/>
     </div>
   </Router>
 }
