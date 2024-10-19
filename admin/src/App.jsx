@@ -14,12 +14,12 @@ export  const backendUrl = import.meta.env.VITE_BACKEND_URL
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : '');
 
-  useEffect(()=>{
+  useEffect(() => {
     const savedToken = localStorage.getItem('token');
-    if (savedToken) {
-      setToken(savedToken); // Ensure correct token is being set
+    if (!token && savedToken) {
+      setToken(savedToken); // Only set token if it's not already set
     }
-  },[token])
+  }, []); // Only run once after the component mounts
   return (
     <div className="bg-gray-50 min-h-screen ">
             <ToastContainer/>
